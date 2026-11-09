@@ -41,7 +41,7 @@ const ProductsData = [
   {
     id: 5,
     img: Img2,
-    title: "Fashin T-Shirt",
+    title: "Fashion T-Shirt",
     rating: 4.5,
     color: "Pink",
     aosDelay: "800",
@@ -49,8 +49,10 @@ const ProductsData = [
 ];
 
 const Products = () => {
+  React.useMemo(() => ProductsData, []);
+
   return (
-    <div className="mt-14 mb-12">
+    <div className="mt-14 mb-12 dark:bg-gray-900 dark:text-white duration-200">
       <div className="container">
         {/* Header section */}
         <div className="text-center mb-10 max-w-[600px] mx-auto">
@@ -78,14 +80,14 @@ const Products = () => {
               >
                 <img
                   src={data.img}
-                  alt=""
+                  alt={data.title}
                   className="h-[220px] w-[150px] object-cover rounded-md"
                 />
                 <div>
                   <h3 className="font-semibold">{data.title}</h3>
                   <p className="text-sm text-gray-600">{data.color}</p>
                   <div className="flex items-center gap-1">
-                    <FaStar className="text-yellow-400" />
+                    <FaStar className="text-yellow-400" aria-hidden="true" />
                     <span>{data.rating}</span>
                   </div>
                 </div>
@@ -94,7 +96,7 @@ const Products = () => {
           </div>
           {/* view all button */}
           <div className="flex justify-center">
-            <button className="text-center mt-10 cursor-pointer bg-primary text-white py-1 px-5 rounded-md">
+            <button className="text-center mt-10 cursor-pointer bg-primary text-white py-1 px-5 rounded-md" aria-label="View all products">
               View All Button
             </button>
           </div>

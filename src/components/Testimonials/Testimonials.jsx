@@ -21,7 +21,7 @@ const TestimonialData = [
     img: "https://picsum.photos/104/104",
   },
   {
-    id: 5,
+    id: 4,
     name: "Sachin Tendulkar",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque reiciendis inventore iste ratione ex alias quis magni at optio",
     img: "https://picsum.photos/103/103",
@@ -29,7 +29,9 @@ const TestimonialData = [
 ];
 
 const Testimonials = () => {
-  var settings = {
+  React.useMemo(() => TestimonialData, []);
+
+  const settings = React.useMemo(() => ({
     dots: true,
     arrows: false,
     infinite: true,
@@ -65,10 +67,10 @@ const Testimonials = () => {
         },
       },
     ],
-  };
+  }), []);
 
   return (
-    <div className="py-10 mb-10">
+    <div className="py-10 mb-10 dark:bg-gray-900 dark:text-white duration-200">
       <div className="container">
         {/* header section */}
         <div className="text-center mb-10 max-w-[600px] mx-auto">
@@ -96,7 +98,7 @@ const Testimonials = () => {
                   <div className="mb-4">
                     <img
                       src={data.img}
-                      alt=""
+                      alt={`Photo of ${data.name}`}
                       className="rounded-full w-20 h-20"
                     />
                   </div>
@@ -108,7 +110,7 @@ const Testimonials = () => {
                       </h1>
                     </div>
                   </div>
-                  <p className="text-black/20 text-9xl font-serif absolute top-0 right-0">
+                  <p className="text-black/20 dark:text-white/20 text-9xl font-serif absolute top-0 right-0" aria-hidden="true">
                     ,,
                   </p>
                 </div>

@@ -29,7 +29,7 @@ const ImageList = [
 ];
 
 const Hero = ({ handleOrderPopup }) => {
-  var settings = {
+  const settings = React.useMemo(() => ({
     dots: false,
     arrows: false,
     infinite: true,
@@ -40,7 +40,7 @@ const Hero = ({ handleOrderPopup }) => {
     cssEase: "ease-in-out",
     pauseOnHover: false,
     pauseOnFocus: true,
-  };
+  }), []);
 
   return (
     <div className="relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-gray-100 flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200 ">
@@ -78,6 +78,7 @@ const Hero = ({ handleOrderPopup }) => {
                     <button
                       onClick={handleOrderPopup}
                       className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-full"
+                      aria-label="Order now"
                     >
                       Order Now
                     </button>
@@ -92,7 +93,7 @@ const Hero = ({ handleOrderPopup }) => {
                   >
                     <img
                       src={data.img}
-                      alt=""
+                      alt={data.title}
                       className="w-[300px] h-[300px] sm:h-[450px] sm:w-[450px] sm:scale-105 lg:scale-120 object-contain mx-auto"
                     />
                   </div>

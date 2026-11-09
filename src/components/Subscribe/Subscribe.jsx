@@ -1,20 +1,20 @@
 import React from "react";
 import Banner from "../../assets/website/orange-pattern.jpg";
 
-const BannerImg = {
+const BannerImg = React.useMemo(() => ({
   backgroundImage: `url(${Banner})`,
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
   height: "100%",
   width: "100%",
-};
+}), []);
 
 const Subscribe = () => {
   return (
     <div
       data-aos="zoom-in"
-      className="mb-20 bg-gray-100 dark:bg-gray-800 text-white "
+      className="mb-20 bg-gray-100 dark:bg-gray-800 text-white dark:text-white duration-200"
       style={BannerImg}
     >
       <div className="container backdrop-blur-sm py-10">
@@ -24,9 +24,10 @@ const Subscribe = () => {
           </h1>
           <input
             data-aos="fade-up"
-            type="text"
+            type="email"
             placeholder="Enter your email"
-            className="w-full p-3"
+            aria-label="Email address for newsletter"
+            className="w-full p-3 rounded-md"
           />
         </div>
       </div>

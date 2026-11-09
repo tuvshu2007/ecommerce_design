@@ -9,14 +9,14 @@ import {
   FaMobileAlt,
 } from "react-icons/fa";
 
-const BannerImg = {
+const BannerImg = React.useMemo(() => ({
   backgroundImage: `url(${Banner})`,
   backgroundPosition: "bottom",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
   height: "100%",
   width: "100%",
-};
+}), []);
 
 const FooterLinks = [
   {
@@ -38,14 +38,16 @@ const FooterLinks = [
 ];
 
 const Footer = () => {
+  React.useMemo(() => FooterLinks, []);
+
   return (
-    <div style={BannerImg} className="text-white">
+    <div style={BannerImg} className="text-white dark:text-white duration-200">
       <div className="container">
         <div data-aos="zoom-in" className="grid md:grid-cols-3 pb-44 pt-5">
           {/* company details */}
           <div className="py-8 px-4">
             <h1 className="sm:text-3xl text-xl font-bold sm:text-left text-justify mb-3 flex items-center gap-3">
-              <img src={footerLogo} alt="" className="max-w-[50px]" />
+              <img src={footerLogo} alt="Shopsy logo" className="max-w-[50px]" />
               Shopsy
             </h1>
             <p>
@@ -95,23 +97,23 @@ const Footer = () => {
 
             <div>
               <div className="flex items-center gap-3 mt-6">
-                <a href="#">
+                <a href="#" aria-label="Visit our Instagram">
                   <FaInstagram className="text-3xl" />
                 </a>
-                <a href="#">
+                <a href="#" aria-label="Visit our Facebook">
                   <FaFacebook className="text-3xl" />
                 </a>
-                <a href="#">
+                <a href="#" aria-label="Visit our LinkedIn">
                   <FaLinkedin className="text-3xl" />
                 </a>
               </div>
               <div className="mt-6">
                 <div className="flex items-center gap-3">
-                  <FaLocationArrow />
+                  <FaLocationArrow aria-hidden="true" />
                   <p>Noida, Uttar Pradesh</p>
                 </div>
                 <div className="flex items-center gap-3 mt-3">
-                  <FaMobileAlt />
+                  <FaMobileAlt aria-hidden="true" />
                   <p>+91 123456789</p>
                 </div>
               </div>
